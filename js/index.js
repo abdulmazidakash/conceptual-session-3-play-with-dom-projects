@@ -44,7 +44,7 @@ calculateButton.addEventListener('click', function(){
 
 	//history  card 
 	const historyItem = document.createElement('div');
-	historyItem.className = 'bg-white p-3 rounded-md border-1-2 border-indigo-500';
+	historyItem.className = 'bg-white p-3 rounded-md border-l-2 border-indigo-500';
 	historyItem.innerHTML = `
 	
 		<p class='text-xs text-gray-500'>Serial: ${count}</p>
