@@ -1,13 +1,14 @@
 // console.log('kaj kortese ....');
 
 //getting all the value 
-
+let count =  0;
 
 
 //add event listener for calculate button
 
 const calculateButton = document.getElementById('calculate');
 calculateButton.addEventListener('click', function(){
+	count += 1;
 
 	const income = parseFloat(document.getElementById('income').value);
 	// console.log(income);
@@ -30,6 +31,22 @@ calculateButton.addEventListener('click', function(){
 
 	const result = document.getElementById('results');
 	result.classList.remove('hidden');
+
+	//history  card 
+	const historyItem = document.createElement('div');
+	historyItem.className = 'bg-white p-3 rounded-md border-1-2 border-indigo-500';
+	historyItem.innerHTML = `
+	
+		<p class='text-xs text-gray-500'>Serial: ${count}</p>
+		<p class='text-xs text-gray-500'>${new Date().toLocaleDateString()}</p>
+		<p class='text-xs text-gray-500'>Income: ${income.toFixed(2)}</p>
+		<p class='text-xs text-gray-500'>Expense: ${totalExpense.toFixed(2)}</p>
+		<p class='text-xs text-gray-500'>Balance: ${balance.toFixed(2)}</p>
+	
+	`;
+
+	const historyContainer = document.getElementById('history-list');
+	historyContainer.insertBefore(historyItem, historyContainer.firstChild)
 })
 
 //add event listener for saving button
@@ -72,4 +89,5 @@ historyTab.addEventListener('click', function(){
 	assistantTab.classList.add('text-gray-600');
 
 	document.getElementById('expense-form').classList.add('hidden');
+	document.getElementById('history-section').classList.remove('hidden');
 });
